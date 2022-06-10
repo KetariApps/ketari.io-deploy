@@ -1,0 +1,30 @@
+# docker-compose.prod.yml by Vic Shóstak <truewebartisans@gmail.com> (https://1wa.co)
+
+version: "3.7"
+
+services:
+  frontend:
+    container_name: frontend
+    build:
+      context: git@github.com:KetariApps/ketari.io.git
+      dockerfile: ./frontend/Dockerfile
+    volumes:
+      - static:/app/build
+
+  nginx:
+    volumes:
+      - static:/usr/share/nginx/html
+      - ./frontend/build:/usr/share/nginx/html/
+      - ./webserver/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./webserver/nginx/ketari.io.conf:/etc/nginx/sites-enabled/ketari.io.conf # change ketari.io (!)
+      - ./webserver/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./webserver/certbot/conf:/etc/letsencrypt
+      - ./webserver/certbot/www:/var/www/certbot
+    ports:
+      - 80:80
+      - 443:443
+    depends_on:
+      - frontend
+
+volumes:
+  static:
