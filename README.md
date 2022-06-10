@@ -31,13 +31,13 @@ cd example-static-website-docker-nginx-certbot
 - Check configuration of `Certbot`, start the process of obtaining SSL certificate in test mode:
 
 ```console
-make certbot-test DOMAINS="ketari.io www.ketari.io" EMAIL=mail@ketari.io
+make certbot-test DOMAINS="ketari.io www.ketari.io" EMAIL=zach@ketari.io
 ```
 
 - If you see `Congratulations!`, all okay; start the process of obtaining SSL in production mode:
 
 ```console
-make certbot-prod DOMAINS="ketari.io www.ketari.io" EMAIL=mail@ketari.io
+make certbot-prod DOMAINS="ketari.io www.ketari.io" EMAIL=zach@ketari.io
 ```
 
 - And now, check Nginx config:
