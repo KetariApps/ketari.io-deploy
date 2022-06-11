@@ -14,14 +14,8 @@ certbot-prod:
 								--data-path ./webserver/certbot \
 								--staging 0
 
-deploy-test:
-	@docker-compose \
-					-f docker-compose.yml \
-					-f docker-compose.prod.yml \
-					up -d --build --force-recreate
-
 deploy-prod:
 	@docker-compose \
 					-f docker-compose.yml \
 					-f docker-compose.prod.yml \
-					up -d --build --force-recreate
+					up --always-recreate-deps -d --build --force-recreate
