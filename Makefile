@@ -16,4 +16,4 @@ certbot-prod:
 
 deploy-prod:
 	@docker-compose -f $(FILE) down -v 
-	@docker-compose -f $(FILE) up --always-recreate-deps -d --build --force-recreate -e CONTEXT=$(CTX) -e SERVER_NAME=$(SVR)
+	@docker-compose -f $(FILE) --env-file $(ENV_FILE) up --always-recreate-deps -d --build --force-recreate
