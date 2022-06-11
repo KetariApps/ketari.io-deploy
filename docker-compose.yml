@@ -28,6 +28,7 @@ services:
       - 443:443
     depends_on:
       - frontend
+    command: ["/bin/sh" , "-c" , "envsubst < /nginx.conf.template > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"]
 
   certbot:
     container_name: certbot
