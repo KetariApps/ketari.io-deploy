@@ -19,7 +19,7 @@ services:
       - SERVER_NAME=${SERVER_NAME}
     volumes:
       - static:/usr/share/nginx/html
-      - ./webserver/nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - ./webserver/nginx/templates:/etc/nginx/templates
       - ./webserver/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./webserver/certbot/conf:/etc/letsencrypt
       - ./webserver/certbot/www:/var/www/certbot
@@ -28,8 +28,6 @@ services:
       - 443:443
     depends_on:
       - frontend
-    command: ["/bin/sh" , "-c" , "envsubst < /nginx.conf.template > /etc/nginx/nginx.conf && exec nginx -g 'daemon off;'"]
-
   certbot:
     container_name: certbot
     image: certbot/certbot
