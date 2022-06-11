@@ -15,7 +15,5 @@ certbot-prod:
 								--staging 0
 
 deploy-prod:
-	@docker-compose -f docker-compose.prod.yml down -v 
-	@docker-compose \
-					-f docker-compose.prod.yml \
-					up --always-recreate-deps -d --build --force-recreate
+	@docker-compose down -v 
+	@docker-compose up --always-recreate-deps -d --build --force-recreate
