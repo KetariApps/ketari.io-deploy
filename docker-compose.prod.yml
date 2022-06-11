@@ -7,9 +7,9 @@ services:
     container_name: frontend
     build:
       context: git@github.com:KetariApps/ketari.io.git
-      dockerfile: ./frontend/Dockerfile
+      dockerfile: ./Dockerfile
     volumes:
-      - static:/frontend/build
+      - static:/app/build
   nginx:
     container_name: nginx
     image: nginx:alpine
