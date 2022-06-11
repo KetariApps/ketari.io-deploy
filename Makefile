@@ -16,4 +16,4 @@ certbot-prod:
 
 deploy-prod:
 	@docker-compose down -v 
-	@docker-compose up --always-recreate-deps -d --build --force-recreate
+	@docker-compose up --always-recreate-deps -d --build --force-recreate -e CONTEXT=$(CONTEXT) -e SERVER_NAME=$(SERVER_NAME)
