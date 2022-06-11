@@ -15,5 +15,5 @@ certbot-prod:
 								--staging 0
 
 deploy-prod:
-	@docker-compose -f $(FILE) down -v 
-	@docker-compose -f $(FILE) --env-file $(ENV_FILE) up --always-recreate-deps -d --build --force-recreate
+	@docker-compose -f "$(FILE)" down -v 
+	@docker-compose -f "$(FILE)" --env-file "$(ENV_FILE)" up --always-recreate-deps -d --build --force-recreate
